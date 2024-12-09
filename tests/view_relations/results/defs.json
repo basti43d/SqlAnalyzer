@@ -1,0 +1,30 @@
+{
+    "v1": {
+        "id": {
+            "table": "t1",
+            "column": "id"
+        },
+        "a": {
+            "table": "t1",
+            "column": "a"
+        },
+        "b": {
+            "table": "t2",
+            "column": "b"
+        }
+    },
+    "v2": {
+        "id": {
+            "table": "v1",
+            "column": "id"
+        },
+        "a": {
+            "table": "v1",
+            "column": "a"
+        },
+        "b": {
+            "table": "t3",
+            "column": "b"
+        }
+    }
+}

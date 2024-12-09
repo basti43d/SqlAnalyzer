@@ -1,0 +1,88 @@
+{
+    "q2": {
+        "a": {
+            "table": "t1",
+            "column": "a"
+        }
+    },
+    "q3": {
+        "a": {
+            "table": "t1",
+            "column": "a"
+        },
+        "b": {
+            "table": "t2",
+            "column": "b"
+        }
+    },
+    "q4": {
+        "a": {
+            "table": "t1",
+            "column": "a"
+        }
+    },
+    "q5": {
+        "a": {
+            "table": "t1",
+            "column": "a"
+        },
+        "b": {
+            "table": "t2",
+            "column": "b"
+        }
+    },
+    "q6": {
+        "a": {
+            "table": "t1",
+            "column": "a"
+        },
+        "b": {
+            "table": "t2",
+            "column": "b"
+        }
+    },
+    "q7": {
+        "a": {
+            "table": "t5",
+            "column": "a"
+        }
+    },
+    "q8": {
+        "a": {
+            "table": "t1",
+            "column": "a"
+        },
+        "c": {
+            "table": "t2",
+            "column": "c"
+        }
+    },
+    "q9": {
+        "a": {
+            "table": "t5",
+            "column": "a"
+        },
+        "id": {
+            "table": "t8",
+            "column": "id"
+        }
+    },
+    "q10": {
+        "a": {
+            "table": "t1",
+            "column": "a"
+        },
+        "b": {
+            "table": "t2",
+            "column": "b"
+        },
+        "c": {
+            "table": "t3",
+            "column": "c"
+        },
+        "d": {
+            "table": "t4",
+            "column": "d"
+        }
+    }
+}

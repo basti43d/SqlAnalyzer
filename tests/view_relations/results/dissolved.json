@@ -1,0 +1,34 @@
+{
+    "v1": [
+        {
+            "refs": [
+                {
+                    "left": {
+                        "table": "t1",
+                        "column": "id"
+                    },
+                    "right": {
+                        "table": "t2",
+                        "column": "id"
+                    }
+                }
+            ]
+        }
+    ],
+    "v2": [
+        {
+            "refs": [
+                {
+                    "left": {
+                        "table": "t1",
+                        "column": "id"
+                    },
+                    "right": {
+                        "table": "t3",
+                        "column": "id"
+                    }
+                }
+            ]
+        }
+    ]
+}

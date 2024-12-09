@@ -1,0 +1,141 @@
+import json
+from AnalyzeDB import AnalyzeDB
+
+class Table:
+
+    def __init__(self, table_name, cols, pks):
+        self.table_name = table_name
+        self.cols = cols
+        self.pcols = pks
+        self.rels = list()
+        self.relrefs = list()
+        self.gen_rels = list()
+        self.gen_refs = list()
+
+    def append_rel(self, ref_table, rels_columns):
+        t = (1 if c in rels_columns else 0 for c in self.cols)
+        if ref_table in self.relrefs:
+            idx = self.relrefs.index(ref_table)
+            self.rels[idx].append(t)
+        else:
+            self.relrefs.append(ref_table)
+            self.rels.append([t])
+        self.gen_rels.append(ref_table)
+        self.gen_refs.append(t)
+    
+    def __str__(self):
+        s = self.table_name
+        s += ':\n\t\t'
+        s += '\t'.join(self.cols)
+        s += '\n'
+        for i in range(0, len(self.relrefs)):
+            s += '\t' + self.relrefs[i] + ':\n'
+            for j in range(0, len(self.rels[i])):
+                s += '\t\t'
+                s += '\t'.join(str(k) for k in self.rels[i][j])
+                s += '\n'
+        s += 'PK: '
+        s += ', '.join(str(r) for r in self.pcols)
+        return s
+
+class RefBlock:
+
+    def __init__(self, tab1, tab2):
+        self.tab1 = tab1
+        self.tab2 = tab2
+        self.cols1 = list()
+        self.cols2 = list()
+
+    def check(self, tab1, tab2):
+        if (self.tab1 != tab1 and self.tab2 != tab1) or (self.tab1 != tab2 and self.tab2 != tab2): 
+            return False
+        return True
+    
+    def add(self, col1, col2):
+        self.cols1.append(col1)
+        self.cols2.append(col2)
+    
+    def __str__(self):
+        s = self.tab1 + '\t' + self.tab2 + '\n'
+        for i in range(0, len(self.cols1)):
+            s += self.cols1[i] + '\t' + self.cols2[i]
+            s += '\n'
+        return s
+
+
+class RelationExtraction:
+
+    def __init__(self, relations, connection_string):
+        self.db = AnalyzeDB(connection_string=connection_string)
+        self.jrels = json.loads(relations)
+        self.refblocks = list()
+        self.tables = dict()
+    
+    #relationen unabhaengig von view in eine liste uebertragen
+    def aggregate_relations(self):
+        for tab in self.jrels:
+            for obj in self.jrels[tab]:
+                block = obj['refs']
+                rb = list()
+                #!pseudo-relationen hinzufuegen
+                for tp in block:
+                    found = False
+                    tab1 = tp['left']['table']
+                    col1 = tp['left']['column']
+                    tab2 = tp['right']['table']
+                    col2 = tp['right']['column']
+                    for sblock in rb:
+                        if sblock.check(tab1, tab2) == True:
+                            sblock.add(col1, col2)
+                            found = True
+                            break
+                    if not found == True:
+                        r = RefBlock(tab1, tab2)
+                        r.add(col1, col2)
+                        rb.append(r)
+                self.refblocks += rb
+    
+    def init_tables(self):
+        self.db.get_tables()
+        for table in self.db.tables:
+            cols, pks = self.db.get_table_desc(table=table)
+            #vorerst nur name
+            tn = table.split('.')[1]
+            tobj = Table(tn, cols, pks)
+            self.tables[tn] = tobj
+    
+    def build_table_refs(self):
+        for rblock in self.refblocks:
+            tab1 = rblock.tab1
+            tab2 = rblock.tab2
+            self.tables[tab1].append_rel(tab2, rblock.cols1)
+            self.tables[tab2].append_rel(tab1, rblock.cols2)
+    
+    def print_blocks(self):
+        for rblock in self.refblocks:
+            print(rblock)
+    
+    
+    def check_key(refBlock):
+        pass
+    
+
+
+path = 'c:/users/basti/desktop/ba/tests/nested_querys/results/rels.json'
+with open(path, 'r') as f:
+    jstr = f.read()
+
+connection_string = 'DRIVER={ODBC Driver 18 for SQL Server};Server=(localdb)\MSSQLLocalDb;database=testDb;'
+re = RelationExtraction(jstr, connection_string=connection_string)
+re.init_tables()
+re.aggregate_relations()
+#re.print_blocks()
+re.build_table_refs()
+
+#idealen fall betrachten
+#mit spaltensummen arbeiten
+for tab in re.tables:
+    print(re.tables[tab])
+    print()
+
+
