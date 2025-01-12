@@ -1,0 +1,137 @@
+{
+  "Query": {
+    "Body": {
+      "Select": {
+        "Projection": [
+          {
+            "Expression": {
+              "Idents": [
+                {
+                  "Value": "t2",
+                  "QuoteStyle": null
+                },
+                {
+                  "Value": "id",
+                  "QuoteStyle": null
+                }
+              ]
+            }
+          },
+          {
+            "Expression": {
+              "Idents": [
+                {
+                  "Value": "t6",
+                  "QuoteStyle": null
+                },
+                {
+                  "Value": "id",
+                  "QuoteStyle": null
+                }
+              ]
+            }
+          }
+        ],
+        "Distinct": null,
+        "Top": null,
+        "Into": null,
+        "From": [
+          {
+            "Relation": {
+              "Name": {
+                "Values": [
+                  {
+                    "Value": "t2",
+                    "QuoteStyle": null
+                  }
+                ]
+              },
+              "Partitions": null,
+              "Args": null,
+              "WithHints": null,
+              "Version": null,
+              "WithOrdinality": false,
+              "Alias": null
+            },
+            "Joins": [
+              {
+                "Relation": {
+                  "Name": {
+                    "Values": [
+                      {
+                        "Value": "t6",
+                        "QuoteStyle": null
+                      }
+                    ]
+                  },
+                  "Partitions": null,
+                  "Args": null,
+                  "WithHints": null,
+                  "Version": null,
+                  "WithOrdinality": false,
+                  "Alias": null
+                },
+                "JoinOperator": {
+                  "JoinConstraint": {
+                    "Expression": {
+                      "Left": {
+                        "Idents": [
+                          {
+                            "Value": "t2",
+                            "QuoteStyle": null
+                          },
+                          {
+                            "Value": "id",
+                            "QuoteStyle": null
+                          }
+                        ]
+                      },
+                      "Op": 12,
+                      "Right": {
+                        "Idents": [
+                          {
+                            "Value": "t6",
+                            "QuoteStyle": null
+                          },
+                          {
+                            "Value": "id1",
+                            "QuoteStyle": null
+                          }
+                        ]
+                      },
+                      "PgOptions": null
+                    }
+                  }
+                },
+                "Global": false
+              }
+            ]
+          }
+        ],
+        "LateralViews": null,
+        "PreWhere": null,
+        "Selection": null,
+        "GroupBy": null,
+        "ClusterBy": null,
+        "DistributeBy": null,
+        "SortBy": null,
+        "Having": null,
+        "NamedWindow": null,
+        "QualifyBy": null,
+        "WindowBeforeQualify": false,
+        "ValueTableMode": null,
+        "ConnectBy": null
+      }
+    },
+    "With": null,
+    "OrderBy": null,
+    "Limit": null,
+    "Offset": null,
+    "Fetch": null,
+    "Locks": null,
+    "LimitBy": null,
+    "ForClause": null,
+    "Settings": null,
+    "FormatClause": null
+  }
+}

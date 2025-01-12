@@ -1,0 +1,194 @@
+{
+    "q2": [],
+    "q_soll": [
+        {
+            "rels": {
+                "left": "t1",
+                "right": "t2"
+            },
+            "cols":[
+                {
+                    "left": "c1",
+                    "right": "c2"
+                },
+                {
+                    "left": "c3",
+                    "right": "c4"
+                }
+            ]
+        },
+        {
+            "rels": {
+                "left": "t1",
+                "right": "t2"
+            },
+            "cols":[
+                {
+                    "left": "c1",
+                    "right": "c2"
+                },
+                {
+                    "left": "c3",
+                    "right": "c4"
+                }
+            ]
+        }
+    ],
+    "q3": [
+        {
+            "refs": [
+                {
+                    "left": {
+                        "table": "t1",
+                        "column": "a"
+                    },
+                    "right": {
+                        "table": "t2",
+                        "column": "b"
+                    }
+                }
+            ]
+        }
+    ],
+    "q4": [],
+    "q5": [
+        {
+            "refs": [
+                {
+                    "left": {
+                        "table": "t1",
+                        "column": "a"
+                    },
+                    "right": {
+                        "table": "t2",
+                        "column": "b"
+                    }
+                }
+            ]
+        }
+    ],
+    "q6": [
+        {
+            "refs": [
+                {
+                    "left": {
+                        "table": "t1",
+                        "column": "a"
+                    },
+                    "right": {
+                        "table": "t2",
+                        "column": "b"
+                    }
+                },
+                {
+                    "left": {
+                        "table": "t1",
+                        "column": "c"
+                    },
+                    "right": {
+                        "table": "t2",
+                        "column": "d"
+                    }
+                }
+            ]
+        }
+    ],
+    "q7": [
+        {
+            "refs": [
+                {
+                    "left": {
+                        "table": "t8",
+                        "column": "id"
+                    },
+                    "right": {
+                        "table": "t5",
+                        "column": "id"
+                    }
+                }
+            ]
+        }
+    ],
+    "q8": [
+        {
+            "refs": [
+                {
+                    "left": {
+                        "table": "t1",
+                        "column": "a"
+                    },
+                    "right": {
+                        "table": "t2",
+                        "column": "c"
+                    }
+                }
+            ]
+        }
+    ],
+    "q9": [
+        {
+            "refs": [
+                {
+                    "left": {
+                        "table": "t8",
+                        "column": "id"
+                    },
+                    "right": {
+                        "table": "t9",
+                        "column": "id"
+                    }
+                }
+            ]
+        },
+        {
+            "refs": [
+                {
+                    "left": {
+                        "table": "t8",
+                        "column": "id"
+                    },
+                    "right": {
+                        "table": "t5",
+                        "column": "id"
+                    }
+                }
+            ]
+        }
+    ],
+    "q10": [
+        {
+            "refs": [
+                {
+                    "left": {
+                        "table": "t1",
+                        "column": "id"
+                    },
+                    "right": {
+                        "table": "t2",
+                        "column": "id"
+                    }
+                },
+                {
+                    "left": {
+                        "table": "t1",
+                        "column": "id"
+                    },
+                    "right": {
+                        "table": "t3",
+                        "column": "id"
+                    }
+                },
+                {
+                    "left": {
+                        "table": "t3",
+                        "column": "id"
+                    },
+                    "right": {
+                        "table": "t4",
+                        "column": "id"
+                    }
+                }
+            ]
+        }
+    ]
+}
